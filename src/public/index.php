@@ -8,8 +8,6 @@ use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Config;
 use Phalcon\Config\ConfigFactory;
 
-
-
 $config = new Config([]);
 
 // Define some absolute path constants to aid in locating resources
@@ -18,18 +16,15 @@ define('APP_PATH', BASE_PATH . '/app');
 
 // Register an autoloader
 $loader = new Loader();
-
 $loader->registerDirs(
     [
         APP_PATH . "/controllers/",
         APP_PATH . "/models/",
     ]
 );
-
 $loader->register();
 
 $container = new FactoryDefault();
-
 $container->set(
     'view',
     function () {
@@ -38,7 +33,6 @@ $container->set(
         return $view;
     }
 );
-
 $container->set(
     'url',
     function () {
@@ -47,9 +41,7 @@ $container->set(
         return $url;
     }
 );
-
 $application = new Application($container);
-
 $container->set(
     'config',
     function () {
